@@ -29,7 +29,6 @@ async function getModuleMap(ns) {
     return memo;
   });
 
-  console.log(dirs);
   return dirs;
 }
 
@@ -80,6 +79,7 @@ program
         name: 'module',
         type: 'input',
         message: answers => `请输入${answers.namespace}模块下的api`,
+        when: answers => answers.templateType === 'service',
         validate: (input, answers) => {
           if (!input) {
             return '不能为空';
@@ -153,7 +153,7 @@ async function renderPage(answers) {
     isRedux
   });
 
-  const newPageDir = path.join(process.cwd(), 'src/pages', namespace, pageName);
+  const newPageDir = path.join(process.cwd(), 'src/pages', namespace, _.upperFirst(pageName));
   shelljs.mkdir('-p', newPageDir);
 
   pfs.writeFile(path.join(newPageDir, 'index.tsx'), formatter(text));

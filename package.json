@@ -1,6 +1,6 @@
 {
   "name": "cx-heading",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.js",
   "keywords": [
     "generator",
@@ -25,7 +25,7 @@
   "dependencies": {
     "async": "^3.2.0",
     "chalk": "^4.1.0",
-    "commander": "^7.1.0",
+    "commander": "^7.2.0",
     "inquirer": "^8.0.0",
     "lodash": "^4.17.21",
     "prettier": "^2.2.1",
