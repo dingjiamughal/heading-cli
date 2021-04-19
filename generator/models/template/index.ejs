@@ -1,0 +1,31 @@
+import api from '@/services';
+
+
+import { SET_STATE } from './action.types';
+
+export interface StoreState {}
+export default {
+  namespace: '<%= name %>',
+
+  state: {} as StoreState,
+
+  effects: {
+    *getState({ params }, { call, put }) {
+      const { data } = yield call(api.mdata.goods.querySpu, params);
+      yield put({ type: SET_STATE, payload: data });
+    }
+  },
+
+  reducers: {
+    updateState(state, action) {
+      return {...state, ...action.payload};
+    }
+  },
+
+  subscription: {
+    setup({ history }) {
+      // 监听路由变化
+      return history.listen(({ pathname, search }) => {});
+    }
+  }
+};

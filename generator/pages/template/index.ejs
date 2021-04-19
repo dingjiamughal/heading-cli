@@ -1,0 +1,17 @@
+import React, { memo } from 'react';
+<% if (isRedux) { %>
+    import { connect } from 'dva';
+<% } %>
+
+interface IProps {}
+
+const <%= name %>: React.FC<<%= isRedux ? 'PropsWithStore<IProps>' : 'IProps' %>> = props => {
+    return (<div><%= name %></div>)
+};
+
+<% if (isRedux) { %>
+    const mapStateToProps = ({<%= name %>}) => ({ <%= name %> });
+    export default connect(mapStateToProps)(memo(<%= name %>));
+<% } else { %>
+    export default memo(<%= name %>);
+<% } %>
