@@ -10,6 +10,7 @@ const asyncReduce = require('async/reduce');
 const _ = require('lodash');
 const prettier = require('prettier');
 const shelljs = require('shelljs');
+const yaml = require('js-yaml');
 
 const modules = {
   page: path.join(process.cwd(), 'src/pages'),
@@ -32,11 +33,11 @@ async function getModuleMap(ns) {
   return dirs;
 }
 
-function formatter(text) {
+function formatter(text, parser = 'babel-ts') {
   const prettierConfig = fs.readFileSync(path.resolve(__dirname, '../.prettierrc'), 'utf8');
   const code = prettier.format(text, {
     ...JSON.parse(prettierConfig),
-    parser: 'babel-ts',
+    parser,
     tabWidth: 2
   });
   return code;
@@ -123,6 +124,26 @@ program
 
     await plinth(answers);
   }).args.length || program.help();
+
+// yaml 2 json
+program
+  .command('yaml')
+  .usage('cx-heading yaml => yaml转json')
+  .action(() => {
+    shelljs.cd(process.cwd());
+    const ymlFile = [...shelljs.ls('-R', 'src/**/*.static.yaml')];
+
+    ymlFile.forEach(file => {
+      const json = yaml.load(fs.readFileSync(path.resolve(file), 'utf8'));
+      console.log(json);
+      console.log(path.join(process.cwd(), path.dirname(file), path.basename(file).replace('yaml', 'json')));
+      fs.writeFileSync(
+        path.join(process.cwd(), path.dirname(file), path.basename(file).replace('yaml', 'json')),
+        formatter(JSON.stringify(json), 'json'),
+        'utf8'
+      );
+    });
+  });
 
 program.parse();
 
