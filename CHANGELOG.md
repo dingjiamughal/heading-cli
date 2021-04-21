@@ -11,3 +11,7 @@
 ## [0.0.3] - 2021-04-20
 
 - feat: feature yaml to json
+
+## [0.0.3] - 2021-04-20
+
+- fix: word missing in `model` template
