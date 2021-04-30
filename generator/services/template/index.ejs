@@ -1,13 +1,13 @@
 import request from '@/utils/request';
 
 export default {
-  create: params => request.post('/api/pcweb/<%= ns %>/<%= module %>/create', params),
+  // create: params => request.post('/api/pcweb/<%= ns %>/<%= module %>/create', params),
 
-  remove: params => request.post('/api/pcweb/<%= ns %>/<%= module %>/remove', params),
+  // remove: params => request.post('/api/pcweb/<%= ns %>/<%= module %>/remove', params),
 
-  modify: params => request.post('/api/pcweb/<%= ns %>/<%= module %>/modify', params),
+  // modify: params => request.post('/api/pcweb/<%= ns %>/<%= module %>/modify', params),
 
-  query: (params?: any) => request.post<IPageData<any>>('/api/pcweb/<%= ns %>/<%= module %>/query', params),
+  // query: (params?: any) => request.post<IPageData<any>>('/api/pcweb/<%= ns %>/<%= module %>/query', params),
 
-  get: (params: { uuid: string }) => request.post('/api/pcweb/<%= ns %>/<%= module %>/get', params),
+  // get: (params: { uuid: string }) => request.post('/api/pcweb/<%= ns %>/<%= module %>/get', params),
 };
