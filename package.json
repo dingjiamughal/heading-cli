@@ -1,24 +1,6 @@
 {
-  "name": "cx-heading",
-  "main": "index.js",
-  "version": "1.0.0",
-  "keywords": [
-    "generator",
-    "cli",
-    "cx-heading"
-  ],
-  "description": "A simple yet powerful tools for cx-heading.",
-  "repository": "git@github.com:dingjiamughal/heading-cli.git",
-  "homepage": "https://github.com/dingjiamughal/heading-cli#readme",
-  "bugs": {
-    "url": "https://github.com/dingjiamughal/heading-cli/issues"
-  },
+  "name": "root",
   "private": true,
-  "author": "jia.ding <jia.ding@weimob.com>",
-  "license": "MIT",
-  "engines": {
-    "node": ">=10.12"
-  },
   "scripts": {
     "bootstrap": "lerna bootstrap"
   },
