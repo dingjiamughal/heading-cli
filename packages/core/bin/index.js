@@ -2,7 +2,7 @@
 const program = require('commander');
 const inquirer = require('inquirer');
 const chalk = require('chalk');
-const pkg = require('./package.json');
+const pkg = require('../package.json');
 const path = require('path');
 const fs = require('fs');
 const { promises: pfs } = require('fs');
