@@ -12,6 +12,8 @@ const prettier = require('prettier');
 const shelljs = require('shelljs');
 const yaml = require('js-yaml');
 
+console.log('测试cli迁移到新组织');
+
 const modules = {
   page: path.join(process.cwd(), 'src/pages'),
   service: path.join(process.cwd(), 'src/services')
