@@ -1,6 +1,6 @@
 {
   "name": "@cx-heading/cli-plugin-datamodel",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "cx-cli dataModel",
   "author": "jia.ding <jia.ding@weimob.com>",
   "homepage": "https://github.com/dingjiamughal/heading-cli/tree/main/packages/cli-plugin-dataModel#readme",
