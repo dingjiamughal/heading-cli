@@ -22,14 +22,10 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
-  "dependencies": {
-    "async": "^3.2.0",
-    "chalk": "^4.1.0",
-    "commander": "^7.2.0",
-    "inquirer": "^8.0.0",
-    "js-yaml": "^4.1.0",
-    "lodash": "^4.17.21",
-    "prettier": "^2.2.1",
-    "shelljs": "^0.8.4"
+  "scripts": {
+    "bootstrap": "lerna bootstrap"
+  },
+  "devDependencies": {
+    "lerna": "^4.0.0"
   }
 }

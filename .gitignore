@@ -1,1 +1,5 @@
 node_modules
+packages/**/node_modules
+packages/**/yarn-lock.json
+
+*.log
