@@ -1,7 +1,7 @@
 {
   "name": "cx-heading",
-  "version": "0.0.4",
   "main": "index.js",
+  "version": "1.0.0",
   "keywords": [
     "generator",
     "cli",
@@ -13,14 +13,11 @@
   "bugs": {
     "url": "https://github.com/dingjiamughal/heading-cli/issues"
   },
+  "private": true,
   "author": "jia.ding <jia.ding@weimob.com>",
   "license": "MIT",
-  "bin": "./bin/index.js",
   "engines": {
     "node": ">=10.12"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org"
   },
   "scripts": {
     "bootstrap": "lerna bootstrap"
