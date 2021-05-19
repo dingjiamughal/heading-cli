@@ -1,4 +1,3 @@
-#! /usr/bin/env node
 const program = require('commander');
 const inquirer = require('inquirer');
 const chalk = require('chalk');
@@ -11,6 +10,9 @@ const _ = require('lodash');
 const prettier = require('prettier');
 const shelljs = require('shelljs');
 const yaml = require('js-yaml');
+const yargs = require('yargs');
+const { hideBin } = require('yargs/helpers');
+const dedent = require('dedent');
 
 const modules = {
   page: path.join(process.cwd(), 'src/pages'),

@@ -5,7 +5,7 @@
   "author": "jia.ding <jia.ding@weimob.com>",
   "homepage": "https://github.com/dingjiamughal/heading-cli/tree/main/packages/core#readme",
   "license": "ISC",
-  "main": "lib/core.js",
+  "main": "lib/index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -25,19 +25,44 @@
     "url": "git+https://github.com/dingjiamughal/heading-cli.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "dev": "webpack -w",
+    "build": "webpack"
   },
   "bugs": {
     "url": "https://github.com/dingjiamughal/heading-cli/issues"
   },
   "dependencies": {
+    "@cx-heading/get-npm-info": "file:../../utils/get-npm-info",
+    "@cx-heading/log": "file:../../utils/log",
+    "@cx-heading/utils": "file:../../utils/utils",
     "async": "^3.2.0",
     "chalk": "^4.1.1",
     "commander": "^7.2.0",
+    "core-js": "3",
+    "dedent": "^0.7.0",
+    "dotenv": "^9.0.2",
+    "import-local": "^3.0.2",
     "inquirer": "^8.0.0",
     "js-yaml": "^4.1.0",
+    "leven": "^3.1.0",
     "lodash": "^4.17.21",
+    "minimist": "^1.2.5",
+    "npmlog": "^4.1.2",
+    "os-homedir": "^2.0.0",
+    "path-exists": "^4.0.0",
     "prettier": "^2.2.1",
-    "shelljs": "^0.8.4"
+    "root-check": "^2.0.0",
+    "semver": "^7.3.5",
+    "shelljs": "^0.8.4",
+    "yargs": "^17.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.2",
+    "@babel/plugin-transform-runtime": "^7.14.2",
+    "@babel/preset-env": "^7.14.2",
+    "@babel/runtime-corejs3": "^7.14.0",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.37.0",
+    "webpack-cli": "^4.7.0"
   }
 }

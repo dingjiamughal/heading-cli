@@ -1,0 +1,29 @@
+{
+  "name": "command",
+  "version": "0.1.1",
+  "description": "> TODO: description",
+  "author": "dingjia <465560882@qq.com>",
+  "homepage": "https://github.com/dingjiamughal/heading-cli#readme",
+  "license": "ISC",
+  "main": "lib/command.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dingjiamughal/heading-cli.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/dingjiamughal/heading-cli/issues"
+  }
+}

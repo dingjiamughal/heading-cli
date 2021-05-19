@@ -3,3 +3,5 @@ packages/**/node_modules
 packages/**/yarn-lock.json
 
 *.log
+
+packages/**/*/dist/
