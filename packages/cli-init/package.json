@@ -1,5 +1,5 @@
 {
-  "name": "cli-init",
+  "name": "@cx-heading/cli-init",
   "version": "0.1.1",
   "description": "init a project",
   "author": "dingjia <465560882@qq.com>",

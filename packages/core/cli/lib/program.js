@@ -1,47 +1,52 @@
-const Commander = require('commander');
+const program = require('commander');
 const pkg = require('../package.json');
 const { chalk } = require('@cx-heading/utils');
 const leven = require('leven');
+const init = require('@cx-heading/cli-init');
+const exec = require('@cx-heading/exec');
+const log = require('@cx-heading/log');
 
-const program = new Commander.Command();
+// const program = new Command();
 
 function invokeCommander() {
   program
-    .name('cx-heading')
+    .name(Object.keys(pkg.bin)[0])
     .usage('<command> [options]')
     .version(pkg.version)
-    .option('-d, --debug', '是否开启调试模式', false);
+    .option('-d, --debug', '是否开启调试模式', false)
+    .on('option:debug', function () {
+      if (this._optionValues.debug) {
+        process.env.LOG_LEVEL = 'verbose';
+      } else {
+        process.env.LOG_LEVEL = 'info';
+      }
+
+      log.level = process.env.LOG_LEVEL;
+    });
 
   program
     .command('init [projectName]')
-    .option('-f, --force', '是否强强制初始化项目')
-    .action((projectName, cmd) => {
-      // cx-heading init myapp -f
-      // output: myapp {force: true}
-      console.log(projectName, cmd);
+    .description('初始化项目')
+    .option('-f, --force', '覆盖当前文件')
+    .option('-tp, --targetPath <path>', '是否指定本地调试文件路径', '')
+    .action(exec)
+    .on('option:targetPath', function () {
+      // TODO: 文档上的不太行啊
+      // https://github.com/tj/commander.js/blob/master/Readme_zh-CN.md#%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC
+      process.env.CLI_TARGET_PATH = this._optionValues.targetPath;
     });
-
-  // program.on('option:debug', function () {
-  //   if (process.debug) {
-  //     process.env.LOG_LEVEL = 'verbose';
-  //   } else {
-  //     process.env.LOG_LEVEL = 'info';
-  //   }
-
-  //   log.verbose('test');
-  // });
 
   /**
    * 未知 command 处理
    * forked from https://github.com/vuejs/vue-cli/blob/dev/packages/%40vue/cli/bin/vue.js#L201
    */
-  program.on('command:*', ([cmd]) => {
-    program.outputHelp();
-    console.log(`  ` + chalk.red(`Unknown command ${chalk.yellow(cmd)}.`));
-    console.log();
-    suggestCommands(cmd);
-    process.exitCode = 1;
-  });
+  // program.on('command:*', ([cmd]) => {
+  //   program.outputHelp();
+  //   console.log(`  ` + chalk.red(`Unknown command ${chalk.yellow(cmd)}.`));
+  //   console.log();
+  //   suggestCommands(cmd);
+  //   process.exitCode = 1;
+  // });
 
   program.parse(process.argv);
 }

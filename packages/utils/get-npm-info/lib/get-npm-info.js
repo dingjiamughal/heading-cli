@@ -2,8 +2,6 @@
 const axios = require('axios');
 const semver = require('semver');
 
-module.exports = getNpmInfo;
-
 async function getNpmInfo(npmName, registry) {
   if (!npmName) {
     return false;
@@ -13,6 +11,7 @@ async function getNpmInfo(npmName, registry) {
 
   // 对 npm 发起请求
   const data = await axios.get(npmPkgUrl);
+
   if (data.status !== 200) {
     return false;
   }
@@ -40,8 +39,21 @@ async function getNpmVersionsUpper(localVersion, versions) {
   return versions.filter(version => semver.satisfies(version, `>${localVersion}`)).sort((a, b) => semver.gt(b, a));
 }
 
+/**
+ * 获取远端最新版本
+ */
+async function getNpmLatestVersion(npmName) {
+  const versions = await getVersions(npmName);
+  if (versions.length) {
+    return versions.sort((a, b) => semver.gt(b, a))[0];
+  }
+
+  return null;
+}
+
 module.exports = {
   getNpmInfo,
   getVersions,
-  getNpmVersionsUpper
+  getNpmVersionsUpper,
+  getNpmLatestVersion
 };

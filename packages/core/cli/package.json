@@ -35,6 +35,8 @@
     "@cx-heading/get-npm-info": "file:../../utils/get-npm-info",
     "@cx-heading/log": "file:../../utils/log",
     "@cx-heading/utils": "file:../../utils/utils",
+    "@cx-heading/cli-init": "file:../../cli-init",
+    "@cx-heading/exec": "file:../exec",
     "async": "^3.2.0",
     "chalk": "^4.1.1",
     "commander": "^7.2.0",
