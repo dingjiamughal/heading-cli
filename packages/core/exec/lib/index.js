@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require('path');
+const cp = require('child_process');
 const Package = require('@cx/package');
 const log = require('@cx/log');
 const SETTINGS = require('./settings');
@@ -18,7 +19,7 @@ async function execCommand(...args) {
   const cmd = args[args.length - 1];
 
   const packageName = SETTINGS[cmd.name()];
-  const packageVersion = 'latest';
+  const packageVersion = '0.0.1';
 
   // -tp 不存在，就创建到根目录下的缓存目录 /Users/dingjia/dependencies
   if (!targetPath) {
@@ -34,12 +35,9 @@ async function execCommand(...args) {
       packageVersion
     });
 
-    // Is this pkg exist ???
     if (await cxPkg.exist()) {
-      // npm upgrade package
       await cxPkg.update();
     } else {
-      // npm install package
       await cxPkg.install();
     }
   }
@@ -50,8 +48,36 @@ async function execCommand(...args) {
   }
 
   // ↑↑↑ 拿到了 cxPkg 实例，并且当前 pacakge 是最新的
-  const rootFile = cxPkg.getFileLibPath();
+  const rootFile = cxPkg.getFileLibPath(); // 执行lib下的函数
+  log.verbose('rootFile', rootFile);
+  try {
+    // require(rootFile)(...args);
+    const effectCommand = {};
+    Object.keys(cmd).forEach(key => {
+      if (cmd.hasOwnProperty(key) && !key.startsWith('_') && key !== 'parent') {
+        effectCommand[key] = cmd[key];
+      }
+    });
+    args[args.length - 1] = effectCommand;
+    // console.log(args);
+    const code = `require('${rootFile}').call(null, ${JSON.stringify(args)})`;
 
+    // 使用 stdid: inherit 模式，terminal 中可以展示详细日志
+    const child = cp.spawn('node', ['-e', code], { cwd: process.cwd(), stdio: 'inherit' });
+    // child.stdout.on('data', chunk => {});
+    // child.stderr.on('data', chunk => {});
+
+    child.on('error', e => {
+      log.error(e.message);
+      process.exit(1);
+    });
+    child.on('exit', e => {
+      log.verbose('执行成功', e);
+      process.exit(1);
+    });
+  } catch (err) {
+    console.log(err);
+  }
   // console.log(process.env.CLI_TARGET_PATH);
 }
 

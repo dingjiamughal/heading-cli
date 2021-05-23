@@ -8,6 +8,7 @@ const pathExists = require('@cx/path-exists').sync;
 const { getNpmLatestVersion } = require('@cx/get-npm-info');
 
 /**
+ * npm pacakge 的安装和更新
  * forked from https://github.com/lerna/lerna/blob/main/core/package/index.js
  */
 class Package {
@@ -36,22 +37,24 @@ class Package {
     return path.resolve(this.cachePath, `_${this.cachePathPrefix}@${this.packageVersion}@${this.packageName}`);
   }
 
+  getSpecificCacheFilePath(packageVersion) {
+    return path.resolve(this.cachePath, `_${this.cachePathPrefix}@${packageVersion}@${this.packageName}`);
+  }
+
   async prepare() {
     if (this.cachePath && !pathExists(this.cachePath)) {
       fs.mkdirpSync(this.cachePath);
       console.log('成功创建缓存文件夹');
     }
-    // if (this.packageVersion === 'latest') {
-    //   this.packageVersion = await getNpmLatestVersion(this.packageName);
-    //   console.log(this.packageVersion);
-    // }
+    if (this.packageVersion === 'latest') {
+      this.packageVersion = await getNpmLatestVersion(this.packageName);
+    }
   }
 
   async exist() {
     if (this.cachePath) {
-      // 啥也没有的情况会：
-      // 1. 创建缓存文件
-      // 2. 找到这个 pkg 的远程最新版本
+      // 没有缓存目录的情况：
+      // 1. 创建缓存文件 2. 找到这个 pkg 的远程最新版本
       await this.prepare();
       return pathExists(this.cacheFilePath);
     } else {
@@ -60,16 +63,30 @@ class Package {
   }
 
   install() {
-    // npminstall({
-    //   root: this.targetPath,
-    //   storeDir: this.cachePath,
-    //   pkgs: [{ name: this.packageName, version: this.packageVersion }]
-    // });
     console.log('进来安装');
+    return npminstall({
+      root: this.targetPath,
+      storeDir: this.cachePath,
+      pkgs: [{ name: this.packageName, version: this.packageVersion }]
+    });
   }
 
-  update() {
+  async update() {
     console.log('进来更新');
+    // 远程最新版本
+    const latestVersion = await getNpmLatestVersion(this.packageName);
+    // 看看远程最新版本是不是存在本地，不存在 -> 下载最新版本
+    const latestFilePath = this.getSpecificCacheFilePath(latestVersion);
+    if (!pathExists(latestFilePath)) {
+      await npminstall({
+        root: this.targetPath,
+        storeDir: this.cachePath,
+        pkgs: [{ name: this.packageName, version: latestVersion }]
+      });
+
+      this.latestVersion = latestVersion;
+    }
+    this.latestVersion = latestVersion;
   }
 
   /**

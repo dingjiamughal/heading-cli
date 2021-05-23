@@ -1,3 +1,3 @@
 module.exports = {
-  init: '@cx-heading/cli-init'
+  init: '@cx-heading/utils'
 };

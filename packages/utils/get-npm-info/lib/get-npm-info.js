@@ -6,7 +6,7 @@ async function getNpmInfo(npmName, registry) {
   if (!npmName) {
     return false;
   }
-  const registryUrl = registry ?? 'https://registry.npmjs.org';
+  const registryUrl = registry ? registry : 'https://registry.npmjs.org';
   const npmPkgUrl = registryUrl + '/' + npmName;
 
   // 对 npm 发起请求
@@ -45,7 +45,7 @@ async function getNpmVersionsUpper(localVersion, versions) {
 async function getNpmLatestVersion(npmName) {
   const versions = await getVersions(npmName);
   if (versions.length) {
-    return versions.sort((a, b) => semver.gt(b, a))[0];
+    return versions.sort((a, b) => semver.gt(b, a)).reverse()[0];
   }
 
   return null;

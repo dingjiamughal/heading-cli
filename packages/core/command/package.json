@@ -5,7 +5,7 @@
   "author": "dingjia <465560882@qq.com>",
   "homepage": "https://github.com/dingjiamughal/heading-cli#readme",
   "license": "ISC",
-  "main": "lib/command.js",
+  "main": "lib/index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -25,5 +25,11 @@
   },
   "bugs": {
     "url": "https://github.com/dingjiamughal/heading-cli/issues"
+  },
+  "dependencies": {
+    "@cx-heading/log": "file:../../utils/log",
+    "chalk": "^4.1.1",
+    "lodash": "^4.17.21",
+    "semver": "^7.3.5"
   }
 }
