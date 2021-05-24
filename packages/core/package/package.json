@@ -1,5 +1,5 @@
 {
-  "name": "@cx/package",
+  "name": "@cx-heading/package",
   "version": "0.1.4",
   "description": "> TODO: description",
   "author": "dingjia <465560882@qq.com>",
@@ -28,12 +28,12 @@
     "url": "https://github.com/dingjiamughal/heading-cli/issues"
   },
   "dependencies": {
-    "@cx/get-npm-info": "file:../../utils/get-npm-info",
-    "@cx/path-exists": "file:../../utils/path-exists",
-    "@cx/utils": "file:../../utils/utils",
+    "@cx-heading/get-npm-info": "file:../../utils/get-npm-info",
+    "@cx-heading/path-exists": "file:../../utils/path-exists",
+    "@cx-heading/utils": "file:../../utils/utils",
     "fs-extra": "^10.0.0",
     "npminstall": "^4.11.0",
     "pkg-dir": "^5.0.0"
   },
-  "gitHead": "eeeb53aea72040fc1d66db825e8845aabf58621f"
+  "gitHead": "71b94f4b6fe4b596d68c5f019a0d162ff1e2797a"
 }

@@ -2,6 +2,6 @@
 
 const package = require('..');
 
-describe('@cx/package', () => {
-    it('needs tests');
+describe('@cx-heading/package', () => {
+  it('needs tests');
 });

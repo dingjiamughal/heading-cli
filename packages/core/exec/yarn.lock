@@ -2,5 +2,5 @@
 # yarn lockfile v1
 
 
-"@cx/package@file:../package":
+"@cx-heading/package@file:../package":
   version "0.1.1"

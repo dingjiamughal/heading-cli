@@ -1,11 +1,11 @@
 'use strict';
 const fs = require('fs-extra');
-const { _ } = require('@cx/utils');
+const { _ } = require('@cx-heading/utils');
 const pkgDir = require('pkg-dir').sync;
 const path = require('path');
 const npminstall = require('npminstall');
-const pathExists = require('@cx/path-exists').sync;
-const { getNpmLatestVersion } = require('@cx/get-npm-info');
+const pathExists = require('@cx-heading/path-exists').sync;
+const { getNpmLatestVersion } = require('@cx-heading/get-npm-info');
 
 /**
  * npm pacakge 的安装和更新
@@ -25,7 +25,7 @@ class Package {
     this.targetPath = options.targetPath;
     // store dir
     this.cachePath = options.cachePath;
-    // package name @cx/cli
+    // package name @cx-heading/cli
     this.packageName = options.packageName;
     // package version
     this.packageVersion = options.packageVersion;

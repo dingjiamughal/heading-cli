@@ -2,6 +2,6 @@
 
 const execCommand = require('..');
 
-describe('@cx/exec-command', () => {
-    it('needs tests');
+describe('@cx-heading/exec-command', () => {
+  it('needs tests');
 });

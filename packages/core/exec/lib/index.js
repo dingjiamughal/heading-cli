@@ -2,8 +2,8 @@
 
 const path = require('path');
 const cp = require('child_process');
-const Package = require('@cx/package');
-const log = require('@cx/log');
+const Package = require('@cx-heading/package');
+const log = require('@cx-heading/log');
 const SETTINGS = require('./settings');
 
 // 原先就想照搬 vuecli，exec command 放在 cli/util

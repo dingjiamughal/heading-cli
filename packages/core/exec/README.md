@@ -1,11 +1,11 @@
-# `@cx/exec-command`
+# `@cx-heading/exec-command`
 
 > TODO: description
 
 ## Usage
 
 ```
-const execCommand = require('@cx/exec-command');
+const execCommand = require('@cx-heading/exec-command');
 
 // TODO: DEMONSTRATE API
 ```

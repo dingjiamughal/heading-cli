@@ -1,5 +1,5 @@
 {
-  "name": "@cx/exec",
+  "name": "@cx-heading/exec",
   "version": "0.1.4",
   "description": "> TODO: description",
   "author": "dingjia <465560882@qq.com>",
@@ -28,8 +28,8 @@
     "url": "https://github.com/dingjiamughal/heading-cli/issues"
   },
   "devDependencies": {
-    "@cx/log": "file:../../utils/log",
-    "@cx/package": "^0.1.4"
+    "@cx-heading/log": "file:../../utils/log",
+    "@cx-heading/package": "^0.1.4"
   },
-  "gitHead": "eeeb53aea72040fc1d66db825e8845aabf58621f"
+  "gitHead": "71b94f4b6fe4b596d68c5f019a0d162ff1e2797a"
 }

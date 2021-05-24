@@ -2,16 +2,16 @@
 # yarn lockfile v1
 
 
-"@cx/get-npm-info@file:../../utils/get-npm-info":
+"@cx-heading/get-npm-info@file:../../utils/get-npm-info":
   version "0.1.1"
   dependencies:
     axios "^0.21.1"
     semver "^7.3.5"
 
-"@cx/path-exists@file:../../utils/path-exists":
+"@cx-heading/path-exists@file:../../utils/path-exists":
   version "0.1.1"
 
-"@cx/utils@file:../../utils/utils":
+"@cx-heading/utils@file:../../utils/utils":
   version "0.1.0"
   dependencies:
     chalk "^4.1.1"
