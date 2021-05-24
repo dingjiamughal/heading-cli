@@ -1,6 +1,6 @@
 {
   "name": "@cx-heading/exec",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "> TODO: description",
   "author": "dingjia <465560882@qq.com>",
   "homepage": "https://github.com/dingjiamughal/heading-cli#readme",
@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@cx-heading/log": "file:../../utils/log",
-    "@cx-heading/package": "^0.1.4"
+    "@cx-heading/package": "^0.1.5"
   },
   "gitHead": "71b94f4b6fe4b596d68c5f019a0d162ff1e2797a"
 }
