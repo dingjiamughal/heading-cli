@@ -1,6 +1,6 @@
 {
   "name": "@cx-heading/cli-init",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "init a project",
   "author": "dingjia <465560882@qq.com>",
   "homepage": "https://github.com/dingjiamughal/heading-cli#readme",
@@ -28,8 +28,8 @@
     "url": "https://github.com/dingjiamughal/heading-cli/issues"
   },
   "dependencies": {
-    "@cx-heading/command": "^0.1.2",
-    "@cx-heading/log": "^0.1.2"
+    "@cx-heading/command": "^0.1.3",
+    "@cx-heading/log": "^0.1.3"
   },
   "gitHead": "76b70e528281ddeade00dbff967c8fc22b0a89ee"
 }
