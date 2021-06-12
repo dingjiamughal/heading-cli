@@ -10,6 +10,8 @@ const SETTINGS = require('./settings');
 // 想到后面可能会有别的模块需要 exec，例如 publish
 async function execCommand(...args) {
   let targetPath = process.env.CLI_TARGET_PATH;
+  log.verbose('targetPath', targetPath);
+
   const homePath = process.env.CLI_HOME_PATH;
   // log.verbose('targetPath', targetPath);
   log.verbose('homePath', homePath);
@@ -50,33 +52,37 @@ async function execCommand(...args) {
   // ↑↑↑ 拿到了 cxPkg 实例，并且当前 pacakge 是最新的
   const rootFile = cxPkg.getFileLibPath(); // 执行lib下的函数
   log.verbose('rootFile', rootFile);
-  try {
-    // require(rootFile)(...args);
-    const effectCommand = {};
-    Object.keys(cmd).forEach(key => {
-      if (cmd.hasOwnProperty(key) && !key.startsWith('_') && key !== 'parent') {
-        effectCommand[key] = cmd[key];
-      }
-    });
-    args[args.length - 1] = effectCommand;
-    // console.log(args);
-    const code = `require('${rootFile}').call(null, ${JSON.stringify(args)})`;
 
-    // 使用 stdid: inherit 模式，terminal 中可以展示详细日志
-    const child = cp.spawn('node', ['-e', code], { cwd: process.cwd(), stdio: 'inherit' });
-    // child.stdout.on('data', chunk => {});
-    // child.stderr.on('data', chunk => {});
+  // 测试命令：cx-heading init haha --targetPath=/Users/dingjia/Desktop/handbook/heading-cli/packages/cli-init --debug
+  if (rootFile) {
+    try {
+      // require(rootFile)(...args);
+      const effectCommand = {};
+      Object.keys(cmd).forEach(key => {
+        if (cmd.hasOwnProperty(key) && !key.startsWith('_') && key !== 'parent') {
+          effectCommand[key] = cmd[key];
+        }
+      });
+      args[args.length - 1] = effectCommand;
+      // console.log(args);
+      const code = `require('${rootFile}').call(null, ${JSON.stringify(args)})`;
 
-    child.on('error', e => {
-      log.error(e.message);
-      process.exit(1);
-    });
-    child.on('exit', e => {
-      log.verbose('执行成功', e);
-      process.exit(1);
-    });
-  } catch (err) {
-    console.log(err);
+      // 使用 stdid: inherit 模式，terminal 中可以展示详细日志
+      const child = cp.spawn('node', ['-e', code], { cwd: process.cwd(), stdio: 'inherit' });
+      // child.stdout.on('data', chunk => {});
+      // child.stderr.on('data', chunk => {});
+
+      child.on('error', e => {
+        log.error(e.message);
+        process.exit(1);
+      });
+      child.on('exit', e => {
+        log.verbose('执行成功', e);
+        process.exit(1);
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
   // console.log(process.env.CLI_TARGET_PATH);
 }

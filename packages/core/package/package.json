@@ -31,6 +31,7 @@
     "@cx-heading/get-npm-info": "file:../../utils/get-npm-info",
     "@cx-heading/path-exists": "file:../../utils/path-exists",
     "@cx-heading/utils": "file:../../utils/utils",
+    "@cx-heading/log": "file:../../utils/log",
     "fs-extra": "^10.0.0",
     "npminstall": "^4.11.0",
     "pkg-dir": "^5.0.0"

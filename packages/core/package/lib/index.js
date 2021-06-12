@@ -6,6 +6,7 @@ const path = require('path');
 const npminstall = require('npminstall');
 const pathExists = require('@cx-heading/path-exists').sync;
 const { getNpmLatestVersion } = require('@cx-heading/get-npm-info');
+const log = require('@cx-heading/log');
 
 /**
  * npm pacakge 的安装和更新
@@ -63,7 +64,7 @@ class Package {
   }
 
   install() {
-    console.log('进来安装');
+    log.verb('install in here');
     return npminstall({
       root: this.targetPath,
       storeDir: this.cachePath,
@@ -72,7 +73,7 @@ class Package {
   }
 
   async update() {
-    console.log('进来更新');
+    console.log('update in here');
     // 远程最新版本
     const latestVersion = await getNpmLatestVersion(this.packageName);
     // 看看远程最新版本是不是存在本地，不存在 -> 下载最新版本

@@ -8,7 +8,7 @@ const log = require('@cx-heading/log');
 
 // const program = new Command();
 
-function invokeCommander() {
+function invokeProgram() {
   program
     .name(Object.keys(pkg.bin)[0])
     .usage('<command> [options]')
@@ -69,4 +69,4 @@ function suggestCommands(unknownCommand) {
   }
 }
 
-module.exports = invokeCommander;
+module.exports = invokeProgram;

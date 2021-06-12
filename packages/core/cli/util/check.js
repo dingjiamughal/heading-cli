@@ -8,6 +8,7 @@ const osHomedir = require('os-homedir');
 // const rootCheck = require('root-check');
 const minimist = require('minimist');
 const dotenv = require('dotenv').config;
+const { userHomePath } = require('./settings');
 
 class Check {
   checkPkgVersion() {
@@ -56,7 +57,7 @@ class Check {
     if (process.env.CLI_HOME) {
       process.env.CLI_HOME_PATH = path.join(userHome, process.env.CLI_HOME);
     } else {
-      process.env.CLI_HOME_PATH = path.join(userHome, 'cx-cli-home');
+      process.env.CLI_HOME_PATH = path.join(userHome, userHomePath);
     }
   }
 }

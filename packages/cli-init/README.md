@@ -2,6 +2,10 @@
 
 > TODO: description
 
+## intro
+
+`root path` => `/Users/dingjia/cx-cli-home`
+
 ## Usage
 
 ```
