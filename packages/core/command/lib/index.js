@@ -45,7 +45,7 @@ class Command {
   initArgs() {
     this.cmd = this.argv[this.argv.length - 1];
     this.argv = this.argv.slice(0, this.argv.length - 1);
-    console.log(this.argv);
+    // console.log(this.argv);
   }
 
   init() {

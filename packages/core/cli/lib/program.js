@@ -25,6 +25,16 @@ function invokeProgram() {
     });
 
   program
+    .command('interface')
+    .description('生成interface')
+    .option('-f, --force', '覆盖当前文件')
+    .option('-tp, --targetPath <path>', '是否指定本地调试文件路径', '')
+    .action(exec)
+    .on('option:targetPath', function () {
+      process.env.CLI_TARGET_PATH = this._optionValues.targetPath;
+    });
+
+  program
     .command('init [projectName]')
     .description('初始化项目')
     .option('-f, --force', '覆盖当前文件')
