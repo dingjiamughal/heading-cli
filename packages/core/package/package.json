@@ -1,6 +1,6 @@
 {
   "name": "@cx-heading/package",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "> TODO: description",
   "author": "dingjia <465560882@qq.com>",
   "homepage": "https://github.com/dingjiamughal/heading-cli#readme",
@@ -29,9 +29,9 @@
   },
   "dependencies": {
     "@cx-heading/get-npm-info": "file:../../utils/get-npm-info",
+    "@cx-heading/log": "file:../../utils/log",
     "@cx-heading/path-exists": "file:../../utils/path-exists",
     "@cx-heading/utils": "file:../../utils/utils",
-    "@cx-heading/log": "file:../../utils/log",
     "fs-extra": "^10.0.0",
     "npminstall": "^4.11.0",
     "pkg-dir": "^5.0.0"

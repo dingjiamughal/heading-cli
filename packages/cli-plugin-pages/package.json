@@ -1,6 +1,6 @@
 {
   "name": "@cx-heading/cli-plugin-pages",
-  "version": "0.1.0",
+  "version": "0.1.6",
   "description": "cx-cli pages",
   "author": "jia.ding <jia.ding@weimob.com>",
   "homepage": "https://github.com/dingjiamughal/heading-cli/tree/main/packages/cli-plugin-pages#readme",
