@@ -14,7 +14,8 @@
     "cx-heading": "bin/index.js"
   },
   "files": [
-    "lib"
+    "lib",
+    "util"
   ],
   "publishConfig": {
     "access": "public",
