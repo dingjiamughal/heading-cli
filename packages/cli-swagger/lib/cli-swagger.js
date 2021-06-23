@@ -43,7 +43,7 @@ class InitCommand extends Command {
       const { data: json } = await axios.get(encodeURI(baseUrl + item.url));
 
       fse.writeFileSync(
-        path.join(process.cwd(), `${item.name}.json`),
+        path.join(process.cwd(), `swagger/${item.name}.json`),
         typeof json === 'object' ? JSON.stringify(json) : json,
         { encoding: 'utf-8' }
       );
