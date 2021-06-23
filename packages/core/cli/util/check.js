@@ -1,7 +1,7 @@
 const path = require('path');
 const log = require('@cx-heading/log');
 const sermer = require('semver');
-const { LOWEST_NODE_VERSION } = require('../const');
+const { LOWEST_NODE_VERSION } = require('./const');
 const chalk = require('chalk');
 const pathExists = require('path-exists').sync;
 const osHomedir = require('os-homedir');
