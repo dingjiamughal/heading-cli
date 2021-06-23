@@ -27,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/dingjiamughal/heading-cli/issues"
   },
-  "devDependencies": {
+  "dependencies": {
     "@cx-heading/log": "^0.1.6",
     "@cx-heading/package": "^0.1.8"
   },
