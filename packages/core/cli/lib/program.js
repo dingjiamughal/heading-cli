@@ -36,8 +36,11 @@ function invokeProgram() {
       ${chalk.yellow('step1:')} 类似配置 .babelrc 一样，在项目根目录下新建文件 .headingrc
       ${chalk.yellow('step2:')} 黏贴 👉 ${chalk.yellow(`{ include: ['财务', '资料'] }`)}
       ${chalk.yellow('step3:')} 运行命令 yarn gen:interface 或 npx cx-heading interface ${chalk.bold.cyan(
-        '(首次很耗时，推荐更新下项目依赖用第一种)'
+        '(首次很耗时，推荐更新下项目依赖用第一种方式)'
       )}
+
+      ${chalk.bold.green('最终生成的文件在 swagger 文件夹 enjoy 😼')}
+      ${chalk.bold.red('最后报的 error 不影响使用，是出于节能环保开了子进程，不能监听到函数结束，所以手动 exit 了')}
     `
     )
 
