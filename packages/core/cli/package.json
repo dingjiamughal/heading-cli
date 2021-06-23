@@ -1,6 +1,6 @@
 {
   "name": "@cx-heading/core",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "cx-heading cli core",
   "author": "jia.ding <jia.ding@weimob.com>",
   "homepage": "https://github.com/dingjiamughal/heading-cli/tree/main/packages/core#readme",
@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@cx-heading/cli-init": "^0.1.6",
-    "@cx-heading/exec": "^0.1.8",
+    "@cx-heading/exec": "^0.1.10",
     "@cx-heading/get-npm-info": "^0.1.6",
     "@cx-heading/log": "^0.1.6",
     "@cx-heading/utils": "^0.1.6",
