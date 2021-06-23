@@ -8,7 +8,6 @@ async function cli() {
   try {
     await prepare();
     invokeCommander();
-    // log.verbose('debug', 'debugger log here');
   } catch (e) {
     log.error(e.message);
   }

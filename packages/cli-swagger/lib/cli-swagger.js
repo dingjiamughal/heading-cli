@@ -5,7 +5,7 @@ const log = require('@cx-heading/log');
 const path = require('path');
 const fse = require('fs-extra');
 const axios = require('axios');
-const _ = require('lodash');
+const pick = require('lodash/pick');
 const { generateApi } = require('swagger-typescript-api');
 const asyncEach = require('async/each');
 const { exec, execSync } = require('child_process');
@@ -34,23 +34,13 @@ class InitCommand extends Command {
       'http://cxerp-sd.k8s1.internal.weimobdev.com/heading/cx/main/swagger-resources'
     );
 
-    const series = types.map(item => _.pick(item, ['name', 'url']));
+    const series = types.map(item => pick(item, ['name', 'url']));
 
     asyncEach(series, async (item, index) => {
       if (whiteList && whiteList.length && !whiteList.some(it => item.name.includes(it))) {
         return;
       }
       const { data: json } = await axios.get(encodeURI(baseUrl + item.url));
-      // console.log(json);
-
-      // const json5 = prettier.format(json, {
-      //   semi: true,
-      //   tabWidth: 2,
-      //   singleQuote: true,
-      //   trailingComma: 'none',
-      //   parser: 'json'
-      // });
-      // console.log(json5);
 
       fse.writeFileSync(
         path.join(process.cwd(), `${item.name}.json`),

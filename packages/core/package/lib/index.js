@@ -99,7 +99,6 @@ class Package {
    */
   getFileLibPath() {
     // console.log(this.cachePath, this.cachePathPrefix, this.packageVersion);
-    // console.log(this.cacheFilePath);
 
     const dir = pkgDir(this.cachePath ? this.cacheFilePath : this.targetPath);
 
