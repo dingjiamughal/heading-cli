@@ -28,8 +28,8 @@
     "url": "https://github.com/dingjiamughal/heading-cli/issues"
   },
   "devDependencies": {
-    "@cx-heading/log": "file:../../utils/log",
-    "@cx-heading/package": "file:../package"
+    "@cx-heading/log": "^0.1.6",
+    "@cx-heading/package": "^0.1.7"
   },
-  "gitHead": "71b94f4b6fe4b596d68c5f019a0d162ff1e2797a"
+  "gitHead": "30ab4faeb23e882d13a2d20deea0af866b545b90"
 }

@@ -28,13 +28,13 @@
     "url": "https://github.com/dingjiamughal/heading-cli/issues"
   },
   "dependencies": {
-    "@cx-heading/get-npm-info": "file:../../utils/get-npm-info",
-    "@cx-heading/log": "file:../../utils/log",
-    "@cx-heading/path-exists": "file:../../utils/path-exists",
-    "@cx-heading/utils": "file:../../utils/utils",
+    "@cx-heading/get-npm-info": "^0.1.6",
+    "@cx-heading/log": "^0.1.6",
+    "@cx-heading/path-exists": "^0.1.6",
+    "@cx-heading/utils": "^0.1.6",
     "fs-extra": "^10.0.0",
     "npminstall": "^4.11.0",
     "pkg-dir": "^5.0.0"
   },
-  "gitHead": "71b94f4b6fe4b596d68c5f019a0d162ff1e2797a"
+  "gitHead": "30ab4faeb23e882d13a2d20deea0af866b545b90"
 }

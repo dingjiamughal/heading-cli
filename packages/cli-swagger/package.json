@@ -14,6 +14,7 @@
     "lib"
   ],
   "publishConfig": {
+    "access": "public",
     "registry": "http://registry.npmjs.org/"
   },
   "repository": {
@@ -27,8 +28,8 @@
     "url": "https://github.com/dingjiamughal/heading-cli/issues"
   },
   "dependencies": {
-    "@cx-heading/command": "file:../core/command",
-    "@cx-heading/log": "file:../utils/log",
+    "@cx-heading/command": "^0.1.6",
+    "@cx-heading/log": "^0.1.6",
     "async": "^3.2.0",
     "axios": "^0.21.1",
     "cosmiconfig": "^7.0.0",
@@ -36,5 +37,6 @@
     "lodash": "^4.17.21",
     "prettier": "^2.3.1",
     "swagger-typescript-api": "^9.1.2"
-  }
+  },
+  "gitHead": "30ab4faeb23e882d13a2d20deea0af866b545b90"
 }
