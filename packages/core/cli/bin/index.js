@@ -1,2 +1,2 @@
 #! /usr/bin/env node
-require('./core');
+require('../lib/core');

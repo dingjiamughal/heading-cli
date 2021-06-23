@@ -4,5 +4,5 @@ const importLocal = require('import-local');
 if (importLocal(__filename)) {
   require('npmlog').info('cli', '本地 cli 模块执行');
 } else {
-  require('../lib')(process.argv.slice(2));
+  require('.')(process.argv.slice(2));
 }
