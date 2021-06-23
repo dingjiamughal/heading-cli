@@ -28,13 +28,16 @@ class InitCommand extends Command {
     // Search for a configuration by walking up directories.
     // See documentation for search, below.
     const result = await explorer.search();
-    const whiteList = result.config.include;
+    const whiteList = result && result.config.include;
 
     const { data: types } = await axios.get(
       'http://cxerp-sd.k8s1.internal.weimobdev.com/heading/cx/main/swagger-resources'
     );
 
     const series = types.map(item => pick(item, ['name', 'url']));
+
+    // 直接叫 swagger 吧，简单点
+    fse.ensureDirSync(path.join(process.cwd(), 'swagger'));
 
     asyncEach(series, async (item, index) => {
       if (whiteList && whiteList.length && !whiteList.some(it => item.name.includes(it))) {
@@ -49,8 +52,8 @@ class InitCommand extends Command {
       );
       generateApi({
         name: `${item.name}.ts`,
-        output: path.resolve(process.cwd(), './__generated__'),
-        input: path.resolve(process.cwd(), `${item.name}.json`)
+        output: path.resolve(process.cwd(), './swagger/__generated__'),
+        input: path.resolve(process.cwd(), `./swagger/${item.name}.json`)
       });
 
       // execSync(`npx swagger-typescript-api -p ${item.name}.json -n ${item.name}.ts`);

@@ -5,6 +5,7 @@ const leven = require('leven');
 const init = require('@cx-heading/cli-init');
 const exec = require('@cx-heading/exec');
 const log = require('@cx-heading/log');
+const dedent = require('dedent');
 
 // const program = new Command();
 
@@ -26,9 +27,21 @@ function invokeProgram() {
 
   program
     .command('interface')
-    .description('生成interface')
-    .option('-f, --force', '覆盖当前文件')
-    .option('-tp, --targetPath <path>', '是否指定本地调试文件路径', '')
+    .description(
+      dedent`📚 ${chalk.bold.green('生成 interface')}
+      ${chalk.bold.green(
+        '🏷  默认将 api 文档全量生成 interface，如果不需要这么激进，可以选择性的生成想要的模块，例如只需要【财务 & 资料】↓↓'
+      )}
+
+      ${chalk.yellow('step1:')} 类似配置 .babelrc 一样，在项目根目录下新建文件 .headingrc
+      ${chalk.yellow('step2:')} 黏贴 👉 ${chalk.yellow(`{ include: ['财务', '资料'] }`)}
+      ${chalk.yellow('step3:')} 运行命令 yarn gen:interface 或 npx cx-heading interface ${chalk.bold.cyan(
+        '(首次很耗时，推荐更新下项目依赖用第一种)'
+      )}
+    `
+    )
+
+    .option('-tp, --targetPath <path>', '是否指定本地调试文件路径(本地调试用)', '')
     .action(exec)
     .on('option:targetPath', function () {
       process.env.CLI_TARGET_PATH = this._optionValues.targetPath;
