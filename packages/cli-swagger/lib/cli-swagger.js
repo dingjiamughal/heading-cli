@@ -11,14 +11,15 @@ const asyncEach = require('async/each');
 const { exec, execSync } = require('child_process');
 const prettier = require('prettier');
 const { cosmiconfig, cosmiconfigSync } = require('cosmiconfig');
-const qs = require('querystring');
 
 const baseUrl = 'http://cxerp-sd.k8s1.internal.weimobdev.com/heading/cx/main';
 
 class InitCommand extends Command {
   init() {
-    const options = this.argv[0];
-    this.force = options.force;
+    // const options = this.argv[0];
+    // this.force = options.force;
+
+    console.log('初始化... interface transfer 并不需要啥初始化');
   }
 
   async exec() {
@@ -27,7 +28,6 @@ class InitCommand extends Command {
     // Search for a configuration by walking up directories.
     // See documentation for search, below.
     const result = await explorer.search();
-    console.log(result);
     const whiteList = result.config.include;
 
     const { data: types } = await axios.get(
@@ -41,7 +41,8 @@ class InitCommand extends Command {
         return;
       }
       const { data: json } = await axios.get(encodeURI(baseUrl + item.url));
-      console.log(json);
+      // console.log(json);
+
       // const json5 = prettier.format(json, {
       //   semi: true,
       //   tabWidth: 2,
@@ -51,7 +52,11 @@ class InitCommand extends Command {
       // });
       // console.log(json5);
 
-      fse.writeFileSync(path.join(process.cwd(), `${item.name}.json`), json, { encoding: 'utf-8' });
+      fse.writeFileSync(
+        path.join(process.cwd(), `${item.name}.json`),
+        typeof json === 'object' ? JSON.stringify(json) : json,
+        { encoding: 'utf-8' }
+      );
       generateApi({
         name: `${item.name}.ts`,
         output: path.resolve(process.cwd(), './__generated__'),

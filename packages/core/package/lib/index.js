@@ -14,6 +14,7 @@ const log = require('@cx-heading/log');
  */
 class Package {
   constructor(options) {
+    log.verbose(JSON.stringify(options));
     if (!options) {
       throw new Error('Package 参数不可为空');
     }
@@ -64,10 +65,12 @@ class Package {
   }
 
   install() {
-    log.verb('install in here');
+    log.verbose('install in here');
+    log.verbose('package version: ', this.packageVersion);
     return npminstall({
       root: this.targetPath,
-      storeDir: this.cachePath,
+      // storeDir: this.cachePath,
+      // pkgs: [{ name: this.packageName, version: this.packageVersion }]
       pkgs: [{ name: this.packageName, version: this.packageVersion }]
     });
   }
@@ -81,7 +84,7 @@ class Package {
     if (!pathExists(latestFilePath)) {
       await npminstall({
         root: this.targetPath,
-        storeDir: this.cachePath,
+        // storeDir: this.cachePath,
         pkgs: [{ name: this.packageName, version: latestVersion }]
       });
 
@@ -95,7 +98,11 @@ class Package {
    * @returns {string} libRootPath
    */
   getFileLibPath() {
-    const dir = pkgDir(this.targetPath);
+    // console.log(this.cachePath, this.cachePathPrefix, this.packageVersion);
+    // console.log(this.cacheFilePath);
+
+    const dir = pkgDir(this.cachePath ? this.cacheFilePath : this.targetPath);
+
     if (dir) {
       const pkgFile = require(path.resolve(dir, 'package.json'));
 

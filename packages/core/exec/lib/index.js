@@ -21,12 +21,16 @@ async function execCommand(...args) {
   const cmd = args[args.length - 1];
 
   const packageName = SETTINGS[cmd.name()];
-  const packageVersion = '0.0.1';
+  const packageVersion = 'latest';
 
-  // -tp 不存在，就创建到根目录下的缓存目录 /Users/dingjia/dependencies
+  /**
+   * -tp 不存在，就创建到根目录下的缓存目录 /Users/dingjia/cx-cli-home/cli-*
+   * 下载 | 更新
+   */
+
   if (!targetPath) {
     // cache path
-    targetPath = path.resolve(homePath, 'dependencies');
+    targetPath = path.resolve(homePath, packageName);
     // 下载的依赖放到 node_modules
     cachePath = path.resolve(targetPath, 'node_modules');
 
@@ -43,7 +47,7 @@ async function execCommand(...args) {
       await cxPkg.install();
     }
   }
-  // -tp 存在，本地的package，就是最新的不用更新
+  // -tp 存在(本地调试用)，require 本地的 package
   else {
     log.verbose('targetPath 为本地地址');
     cxPkg = new Package({ targetPath, packageName, packageVersion });
