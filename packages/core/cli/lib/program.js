@@ -51,6 +51,30 @@ function invokeProgram() {
     });
 
   program
+    .command('pub')
+    .description(
+      dedent`
+      📚 ${chalk.bold.green('代码本地发布')}
+
+      👀 ${chalk.bold.green(
+        `和 cicd 正常流程不一样，为了节约时间，不会每次构建之前 install
+   如果有依赖需要更新，则 👉 在命令结尾加上 -i，如：「yarn gen:pub -i / cx-heading pub -i」 表示需要更新依赖，脚本会重新 install 一下`
+      )}
+
+      📶 ${chalk.bold.yellow(
+        `确保当前电脑已登陆过跳板机，否则在最后推 cdn 过程会重复身份校验导致进程挂掉(亲测很危险)，跳板机账号/密码同 gitlab 账号/密码
+   可以先在本项目终端下运行 npm run pub 走一次推送，此后走该脚本进行发布`
+      )}
+    `
+    )
+    .option('-i, --install', '如果项目依赖有更新，重新 install 依赖')
+    .option('-tp, --targetPath <path>', '是否指定本地调试文件路径(本地调试用)', '')
+    .action(exec)
+    .on('option:targetPath', function () {
+      process.env.CLI_TARGET_PATH = this._optionValues.targetPath;
+    });
+
+  program
     .command('init [projectName]')
     .description('初始化项目')
     .option('-f, --force', '覆盖当前文件')
